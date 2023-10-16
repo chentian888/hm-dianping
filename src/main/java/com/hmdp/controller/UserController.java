@@ -7,6 +7,7 @@ import com.hmdp.dto.UserDTO;
 import com.hmdp.entity.UserInfo;
 import com.hmdp.service.IUserInfoService;
 import com.hmdp.service.IUserService;
+import com.hmdp.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,7 +67,9 @@ public class UserController {
     @GetMapping("/me")
     public Result me(HttpSession session) {
         // TODO 获取当前登录的用户并返回
-        UserDTO user = (UserDTO) session.getAttribute("user");
+//        UserDTO user = (UserDTO) session.getAttribute("user");
+//        return Result.ok(user);
+        UserDTO user = UserHolder.getUser();
         return Result.ok(user);
     }
 
